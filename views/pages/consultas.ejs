@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/headerLogado') %>
+    </header>
+    <div class="container">
+        <h1 class="text-center my-5">Consultas</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Médico</th>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Especialidade</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% for(i=0; i < infos.length; i++) { 
+                    
+                    let data = new Date(infos[i].data)
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    %>
+
+                <tr>
+
+                    <td><%= data.toLocaleDateString('pt-BR') %></td>
+                    <td><%= infos[i].hora %></td>
+                    <td><%= infos[i].medico %></td>
+                    <td><%= infos[i].paciente %></td>
+                    <td><%= infos[i].especialidade %></td>
+                    <td><a class="btn btn-success" href="/editar/<%= infos[i].id %>"> Editar </a>&nbsp;<a
+                            class="btn btn-danger" onclick="confirma()" style="color: #fff;">
+                            Apagar </a></td>
+
+                </tr>
+
+                <script>
+                    function confirma() {
+                        if (confirm("Quer realmente apagar esse registro? ")) {
+                            window.location.href = "/apagar/<%= infos[i].id %>"
+                        }
+                    }
+                </script>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+</html>

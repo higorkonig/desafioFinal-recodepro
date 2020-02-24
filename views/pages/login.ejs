@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <div class="container">
+        <h1 class="mt-5">Desafio Recode, Desenvolvido pelo Higor Konig</h1>
+        <p>Email: admin@admin.com</p>
+        <p class="mb-5">Senha: admin</p>
+        <h1 class="text-center">Login</h1>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" name="senha" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
